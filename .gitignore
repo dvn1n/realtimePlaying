@@ -1,0 +1,71 @@
+# === Environment & Secrets ===
+.env
+.env.local
+.env.*.local
+*.local
+*.backup.*
+*.back.*
+
+# === Dependencies ===
+node_modules/
+bower_components/
+
+# === Build Outputs ===
+dist/
+dist-ssr/
+build/
+bin/
+obj/
+out/
+
+# === Logs ===
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# === Editor & IDE (VS Code, etc.) ===
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.vsix
+.ionide
+
+# === OS Files (Windows & macOS) ===
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.DS_*
+
+# === Design & Media Assets ===
+psd
+thumb
+sketch
+*.stackdump
+
+# === Installers & Shortcuts ===
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# === Sublime Text ===
+*.sublime*

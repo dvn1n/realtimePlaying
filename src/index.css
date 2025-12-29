@@ -1,0 +1,224 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.dot-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  background-color: #1DB954;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) {animation-delay: -0.32s;}
+.dot:nth-child(2) {animation-delay: -0.16s;}
+
+.genre-item-btn {
+  transition: all 0.5s ease;
+}
+
+.genre-item-btn:active {
+  transform: scale(0.9);
+}
+
+.save-btn {
+  transition: all 0.2s ease;
+  background-color: white;
+  color: #121212;
+}
+
+.save-btn:hover {
+  transform: scale(1.1);
+  background-color: #1DB954;
+  color: white
+}
+
+.save-btn:active {
+  transform: scale(0.9);
+}
+
+.yt-pip-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 320px;
+  background-color: rgba(30, 30, 30, 0.5);
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  transform: translateY(120%);
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.yt-pip-player.active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.yt-close-btn {
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5px;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.yt-close-btn:hover {
+  color: #1DB954
+}
+
+.song-result-box {
+  position: relative;
+  width: 100%;
+  display: flex; 
+  align-items: left; 
+  gap: 15px;
+  padding: 10px; 
+  margin-bottom: 10px; 
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  flex-shrink: 0;
+}
+
+.song-result-box:hover {
+  background-color: #1DB954;
+}
+
+.song-info-container {
+  flex: 1;
+  transition: all 0.5s ease;
+}
+
+.save-heart-btn {
+  top: 45%;
+  transform: translateY(-50%);
+  position: absolute;
+  right: -50px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  color: white;
+  padding: 0.5px;
+}
+
+.song-result-box:hover .song-info-container {
+  margin-right: 40px;
+}
+
+.song-result-box:hover .save-heart-btn {
+  right: 15px;
+}
+
+.save-heart-btn:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+@keyframes boxPopup {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+@keyframes boxShutDown {
+  from {opacity: 1; transform: scale(1);}
+  to {opacity: 0; transform: scale(0.8);}  
+}
+.animate-box-popup {
+  animation: boxPopup 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+.animate-box-shutdown {
+  animation: boxShutDown 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
