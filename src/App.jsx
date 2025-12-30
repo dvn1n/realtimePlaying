@@ -249,7 +249,7 @@ function App() {
                     {recommendation.map((rec, index) => (
                       <div 
                         key={index}
-                        onClick={() => handlePlaySong(rec.name, rec.artist.name)}
+                        onClick={() => handlePlaySong(rec.name, rec.artist)}
                         className='song-result-box'
                       >
                         <img 
