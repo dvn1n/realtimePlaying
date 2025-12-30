@@ -179,7 +179,11 @@ button:focus-visible {
 }
 
 .save-heart-btn:active {
-  transform: translateY(-50%) scale(0.9);
+  transform: translateY(-50%) scale(1.4);
+}
+
+.save-heart-btn.active {
+  animation: heartPop 0.3s ease-out;
 }
 
 @media (prefers-color-scheme: light) {
@@ -221,4 +225,10 @@ button:focus-visible {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+@keyframes heartPop {
+  0% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-50%) scale(1.3); }
+  100% { transform: translateY(-50%) scale(1); }
 }

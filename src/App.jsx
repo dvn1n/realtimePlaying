@@ -160,6 +160,11 @@ function App() {
       await axios.put('http://localhost:5000/save-track', {trackId}, {
         headers: {Authorization: token}
       });
+      setRecommendation((prev) => 
+        prev.map((rec) => 
+          rec.id === trackId ? {...rec, isLiked: true} : rec
+        )
+      )
     } catch (err) {
       alert('저장 실패')
     }
@@ -260,10 +265,10 @@ function App() {
                           <div>{rec.artist}</div>
                         </div>
                         <button 
-                          className="save-heart-btn"
+                          className={`save-heart-btn ${rec.isLiked ? 'active' : ''}`}
                           onClick={(e) => handleSaveTrack(e, rec.id)}
                         >
-                          ♡
+                          {rec.isLiked ? '♥' : '♡'}
                         </button>
                       </div>
                     ))}

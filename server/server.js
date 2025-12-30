@@ -35,9 +35,9 @@ const User = mongoose.model('User', UserSchema);
 
 async function checkLikedTrack(accessToken, trackIds) {
   try {
-    const ids = trackIds.join(',');
     const response = await axios.get(`https://api.spotify.com/v1/me/tracks/contains`, {
-      headers: {'Authorization': `Bearer ${token}`}
+      params: {ids: trackIds.join(',')},
+      headers: {'Authorization': `Bearer ${accessToken}`}
     });
     return response.data;
   } catch (err) {
@@ -267,11 +267,7 @@ app.get('/realtime-recommendation', async (req, res) => {
 
     let likedStatus = [];
     if (trackIds.length > 0) {
-      const containRes = await axios.get(`https://api.spotify.com/v1/me/tracks/contains`, {
-        params: {ids: trackIds.join(',')},
-        headers: {Authorization: `Bearer ${accessToken}`}
-      });
-      likedStatus = containRes.data;
+      likedStatus = await checkLikedTrack(accessToken, trackIds);
     }
 
     const result = validTrack.map((t, index) => ({
@@ -308,11 +304,12 @@ app.get('/youtube-play', async (req, res) => {
 
 app.put('/save-track', async (req, res) => {
   const {trackId} = req.body;
-  const token = req.headers.authorization;
+  const token = req.headers.authorization?.split(' ')[1] || req.headers.authorization;
   try {
     await axios({
       method: 'put',
-      url: `https://api.spotify.com/v1/me/tracks?ids=${trackId}`,
+      url: `https://api.spotify.com/v1/me/tracks`,
+      params: {ids: trackId},
       headers: {Authorization: `Bearer ${token}`}
     });
     res.status(200).send('saved to liked song');
